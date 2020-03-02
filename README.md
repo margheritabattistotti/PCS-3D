@@ -1,29 +1,41 @@
-# README #
+# PPC Project - 3D
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## 3D Problem
 
-### What is this repository for? ###
+Create a C++ function which given an input concave polyhedron it returns the list of convex polyhedra.  
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+The C++ function to be implemented is the following
+```c++
+/// Function to convert a concave polyhedron to a list of convex polyhedra
+/// @param[in] concavePolyhedron - the concave polyhedron
+/// @param[out] convexPolyhedra - the list of convex polyhedra
+static Output::ExitCodes ConcaveToConvexPolyhedron(const IPolyhedron& concavePolyhedron, list<IPolyhedron*>& convexPolyhedra);
+```
 
-### How do I get set up? ###
+## Tests
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Test One
 
-### Contribution guidelines ###
+The following image shows the first 3D test:
 
-* Writing tests
-* Code review
-* Other guidelines
+![3DTestOne](Images/PolyhedronTestOne.jpg)
 
-### Who do I talk to? ###
+## Hints
 
-* Repo owner or admin
-* Other community or team contact
+### Generate Other Tests
+
+The following code generates a 3D random polyhedron.
+
+```matlab
+npts = 5;
+pts = randn(npts, 3);
+```
+
+### Show Results
+
+Given a list of points `pts`, it is possible to show them on a plot using the following code:
+
+```matlab
+shp = alphaShape(pts);
+plot(shp,  'facealpha', 0.5);
+```

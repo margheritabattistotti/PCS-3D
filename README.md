@@ -1,4 +1,4 @@
-# PPC Project - 3D
+# PCC Project - 3D
 
 ## 3D Problem
 

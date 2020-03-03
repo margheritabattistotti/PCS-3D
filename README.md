@@ -20,6 +20,14 @@ The following image shows the first 3D test:
 
 ![3DTestOne](Images/PolyhedronTestOne.jpg)
 
+## Solution Example
+
+The results is not unique, it depends from the algorithm implemented.
+
+A possible solution of the Test Two is reported in the following image:
+
+![3DTestTwo](Images/PolygonTestOne_Result.jpg)
+
 ## Class Diagrams
 
 The following class diagrams shows the classes to be used.

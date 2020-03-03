@@ -20,6 +20,26 @@ The following image shows the first 3D test:
 
 ![3DTestOne](Images/PolyhedronTestOne.jpg)
 
+## Class Diagrams
+
+The following class diagrams shows the classes to be used.
+
+### Vertex
+
+![Vertex](Images/ClassDiagramVertex.png)
+
+### Segment
+
+![Segment](Images/ClassDiagramSegment.png)
+
+### Polygon
+
+![Polygon](Images/ClassDiagramPolygon.png)
+
+### Polyhedron
+
+![Polyhedron](Images/ClassDiagramPolyhedron.png)
+
 ## Hints
 
 ### Generate Other Tests

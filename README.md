@@ -42,6 +42,9 @@ The following class diagrams shows the classes to be used.
 
 ## Hints
 
+The input / output of the C++ program can be mixed with MATLAB software.
+The following hints shows are to be used in MATLAB.
+
 ### Generate Other Tests
 
 The following code generates a 3D random polyhedron.

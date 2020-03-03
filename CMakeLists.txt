@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(PCC LANGUAGES CXX C)
+project(PCS LANGUAGES CXX C)
 
 # ADD GEDIM SUBDIRECTORY
 add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/gedim ${CMAKE_CURRENT_BINARY_DIR}/gedim )

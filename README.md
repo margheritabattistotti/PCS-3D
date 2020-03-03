@@ -28,25 +28,9 @@ A possible solution of the Test One is reported in the following image:
 
 ![3DTestTwo](Images/PolygonTestOne_Result.jpg)
 
-## Class Diagrams
+## Code
 
-The following class diagrams shows the classes to be used.
-
-### Vertex
-
-![Vertex](Images/ClassDiagramVertex.png)
-
-### Segment
-
-![Segment](Images/ClassDiagramSegment.png)
-
-### Polygon
-
-![Polygon](Images/ClassDiagramPolygon.png)
-
-### Polyhedron
-
-![Polyhedron](Images/ClassDiagramPolyhedron.png)
+See [Wiki](https://bitbucket.org/FabioVicini/pcs-3d/wiki/Home) for code information.
 
 ## Hints
 

@@ -16,30 +16,30 @@ namespace GeDiM
     namespace Geometry
     {
       // ***************************************************************************
-      void UnitTest::RunAllTests()
+      void UnitTest::RunAllTests(const double& tolerance)
       {
-        RunPolygonTests();
-        RunPolyhedronTests();
+        RunPolygonTests(tolerance);
+        RunPolyhedronTests(tolerance);
       }
       // ***************************************************************************
-      void UnitTest::RunPolygonTests()
+      void UnitTest::RunPolygonTests(const double& tolerance)
       {
         Output::PrintLine('-');
         Output::PrintGenericMessage("Polygon tests", true);
         Output::PrintLine('-');
-        ConcavePolygonUnitTest::TestOne();
+        ConcavePolygonUnitTest::TestOne(tolerance);
         Output::PrintLine('-');
-        ConcavePolygonUnitTest::TestTwo();
+        ConcavePolygonUnitTest::TestTwo(tolerance);
         Output::PrintLine('-');
-        ConcavePolygonUnitTest::TestThree();
+        ConcavePolygonUnitTest::TestThree(tolerance);
       }
       // ***************************************************************************
-      void UnitTest::RunPolyhedronTests()
+      void UnitTest::RunPolyhedronTests(const double& tolerance)
       {
         Output::PrintLine('-');
         Output::PrintGenericMessage("Polyhedron tests", true);
         Output::PrintLine('-');
-        ConcavePolyhedronUnitTest::TestOne();
+        ConcavePolyhedronUnitTest::TestOne(tolerance);
       }
       // ***************************************************************************
       void ConcavePolygonUnitTest::CreatePolygonTestOne(IPolygon& concavePolygon)
@@ -156,13 +156,12 @@ namespace GeDiM
           concavePolygon.AddSegment(segments[s]);
       }
       // ***************************************************************************
-      void ConcavePolygonUnitTest::TestPolygon(const IPolygon& concavePolygon, const string& fatherFunctionName)
+      void ConcavePolygonUnitTest::TestPolygon(const IPolygon& concavePolygon, const double& tolerance, const string& fatherFunctionName)
       {
         list<IPolygon*> convexPolygons;
 
-        Output::Assert(ConcaveToConvex::ConcaveToConvexPolygon(concavePolygon, convexPolygons), "%s: ConcaveToConvexPolygon", fatherFunctionName.c_str());
+        Output::Assert(ConcaveToConvex::ConcaveToConvexPolygon(concavePolygon, convexPolygons, tolerance), "%s: ConcaveToConvexPolygon", fatherFunctionName.c_str());
 
-        double testTolerance =1e-14;
         unsigned int counter = 1;
         for (list<IPolygon*>::iterator it = convexPolygons.begin(); it != convexPolygons.end(); it++)
         {
@@ -173,34 +172,34 @@ namespace GeDiM
           }
 
           const IPolygon& convexPolygon = **it;
-          Output::Assert(ConcaveToConvex::IsPolygonConvex(convexPolygon, testTolerance), "%s: IsPolygonConvex %d", fatherFunctionName.c_str(), counter);
+          Output::Assert(ConcaveToConvex::IsPolygonConvex(convexPolygon, tolerance), "%s: IsPolygonConvex %d", fatherFunctionName.c_str(), counter);
 
           counter++;
         }
       }
       // ***************************************************************************
-      void ConcavePolygonUnitTest::TestOne()
+      void ConcavePolygonUnitTest::TestOne(const double& tolerance)
       {
         Polygon concavePolygon;
 
         ConcavePolygonUnitTest::CreatePolygonTestOne(concavePolygon);
-        ConcavePolygonUnitTest::TestPolygon(concavePolygon, __func__);
+        ConcavePolygonUnitTest::TestPolygon(concavePolygon, tolerance, __func__);
       }
       // ***************************************************************************
-      void ConcavePolygonUnitTest::TestTwo()
+      void ConcavePolygonUnitTest::TestTwo(const double& tolerance)
       {
         Polygon concavePolygon;
 
         ConcavePolygonUnitTest::CreatePolygonTestTwo(concavePolygon);
-        ConcavePolygonUnitTest::TestPolygon(concavePolygon, __func__);
+        ConcavePolygonUnitTest::TestPolygon(concavePolygon, tolerance, __func__);
       }
       // ***************************************************************************
-      void ConcavePolygonUnitTest::TestThree()
+      void ConcavePolygonUnitTest::TestThree(const double& tolerance)
       {
         Polygon concavePolygon;
 
         ConcavePolygonUnitTest::CreatePolygonTestThree(concavePolygon);
-        ConcavePolygonUnitTest::TestPolygon(concavePolygon, __func__);
+        ConcavePolygonUnitTest::TestPolygon(concavePolygon, tolerance, __func__);
       }
       // ***************************************************************************
       void ConcavePolyhedronUnitTest::CreatePolyhedronTestOne(IPolyhedron& concavePolyhedron)
@@ -284,13 +283,12 @@ namespace GeDiM
           concavePolyhedron.AddFace(faces[f]);
       }
       // ***************************************************************************
-      void ConcavePolyhedronUnitTest::TestPolyhedron(const IPolyhedron& concavePolyhedron, const string& fatherFunctionName)
+      void ConcavePolyhedronUnitTest::TestPolyhedron(const IPolyhedron& concavePolyhedron, const double& tolerance, const string& fatherFunctionName)
       {
         list<IPolyhedron*> convexPolyhedra;
 
-        Output::Assert(ConcaveToConvex::ConcaveToConvexPolyhedron(concavePolyhedron, convexPolyhedra), "%s: ConcaveToConvexPolyhedron", fatherFunctionName.c_str());
+        Output::Assert(ConcaveToConvex::ConcaveToConvexPolyhedron(concavePolyhedron, convexPolyhedra, tolerance), "%s: ConcaveToConvexPolyhedron", fatherFunctionName.c_str());
 
-        double testTolerance =1e-14;
         unsigned int counter = 1;
         for (list<IPolyhedron*>::iterator it = convexPolyhedra.begin(); it != convexPolyhedra.end(); it++)
         {
@@ -301,18 +299,18 @@ namespace GeDiM
           }
 
           const IPolyhedron& convexPolyhedron = **it;
-          Output::Assert(ConcaveToConvex::IsPolyhedronConvex(convexPolyhedron, testTolerance), "%s: IsPolyhedronConvex %d", fatherFunctionName.c_str(), counter);
+          Output::Assert(ConcaveToConvex::IsPolyhedronConvex(convexPolyhedron, tolerance), "%s: IsPolyhedronConvex %d", fatherFunctionName.c_str(), counter);
 
           counter++;
         }
       }
       // ***************************************************************************
-      void ConcavePolyhedronUnitTest::TestOne()
+      void ConcavePolyhedronUnitTest::TestOne(const double& tolerance)
       {
         Polyhedron concavePolyhedron;
 
         ConcavePolyhedronUnitTest::CreatePolyhedronTestOne(concavePolyhedron);
-        ConcavePolyhedronUnitTest::TestPolyhedron(concavePolyhedron, __func__);
+        ConcavePolyhedronUnitTest::TestPolyhedron(concavePolyhedron, tolerance, __func__);
       }
       // ***************************************************************************
     }

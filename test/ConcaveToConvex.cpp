@@ -11,7 +11,7 @@ namespace GeDiM
     return false;
   }
   // ***************************************************************************
-  Output::ExitCodes ConcaveToConvex::ConcaveToConvexPolygon(const IPolygon& concavePolygon, list<IPolygon*>& convexPolygons)
+  Output::ExitCodes ConcaveToConvex::ConcaveToConvexPolygon(const IPolygon& concavePolygon, list<IPolygon*>& convexPolygons, const double& tolerance)
   {
     convexPolygons.push_back(concavePolygon.Clone());
 
@@ -23,7 +23,7 @@ namespace GeDiM
     return false;
   }
   // ***************************************************************************
-  Output::ExitCodes ConcaveToConvex::ConcaveToConvexPolyhedron(const IPolyhedron& concavePolyhedron, list<IPolyhedron*>& convexPolyhedra)
+  Output::ExitCodes ConcaveToConvex::ConcaveToConvexPolyhedron(const IPolyhedron& concavePolyhedron, list<IPolyhedron*>& convexPolyhedra, const double& tolerance)
   {
     convexPolyhedra.push_back(concavePolyhedron.Clone());
 

@@ -18,9 +18,9 @@ namespace GeDiM
       class UnitTest
       {
         public:
-          static void RunAllTests();
-          static void RunPolygonTests();
-          static void RunPolyhedronTests();
+          static void RunAllTests(const double& tolerance);
+          static void RunPolygonTests(const double& tolerance);
+          static void RunPolyhedronTests(const double& tolerance);
       };
 
       class ConcavePolygonUnitTest
@@ -33,12 +33,12 @@ namespace GeDiM
           /// Create Polygon for test three
           static void CreatePolygonTestThree(IPolygon& concavePolygon);
           /// Test the Polygon
-          static void TestPolygon(const IPolygon& concavePolygon, const string& fatherFunctionName);
+          static void TestPolygon(const IPolygon& concavePolygon, const double& tolerance, const string& fatherFunctionName);
 
         public:
-          static void TestOne();
-          static void TestTwo();
-          static void TestThree();
+          static void TestOne(const double& tolerance);
+          static void TestTwo(const double& tolerance);
+          static void TestThree(const double& tolerance);
       };
 
       class ConcavePolyhedronUnitTest
@@ -47,10 +47,10 @@ namespace GeDiM
           /// Create Polyhedron for test one
           static void CreatePolyhedronTestOne(IPolyhedron& concavePolyhedron);
           /// Test the Polygon
-          static void TestPolyhedron(const IPolyhedron& concavePolyhedron, const string& fatherFunctionName);
+          static void TestPolyhedron(const IPolyhedron& concavePolyhedron, const double& tolerance, const string& fatherFunctionName);
 
         public:
-          static void TestOne();
+          static void TestOne(const double& tolerance);
       };
     }
   }

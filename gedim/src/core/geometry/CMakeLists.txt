@@ -8,6 +8,7 @@ set(gedim_core_geometry_source
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector1D1D.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D1D.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D2D.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/IntersectorPolygonLine.cpp
 	PARENT_SCOPE)
 
 set(gedim_core_geometry_headers
@@ -25,4 +26,5 @@ set(gedim_core_geometry_headers
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector1D1D.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D1D.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D2D.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/IntersectorPolygonLine.hpp
 	PARENT_SCOPE)

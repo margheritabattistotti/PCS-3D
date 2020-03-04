@@ -30,8 +30,10 @@ namespace GeDiM
           static void CreatePolygonTestOne(IPolygon& concavePolygon);
           /// Create Polygon for test two
           static void CreatePolygonTestTwo(IPolygon& concavePolygon);
-          /// Create Polygon for test thre
+          /// Create Polygon for test three
           static void CreatePolygonTestThree(IPolygon& concavePolygon);
+          /// Test the Polygon
+          static void TestPolygon(const IPolygon& concavePolygon, const string& fatherFunctionName);
 
         public:
           static void TestOne();
@@ -44,6 +46,8 @@ namespace GeDiM
         protected:
           /// Create Polyhedron for test one
           static void CreatePolyhedronTestOne(IPolyhedron& concavePolyhedron);
+          /// Test the Polygon
+          static void TestPolyhedron(const IPolyhedron& concavePolyhedron, const string& fatherFunctionName);
 
         public:
           static void TestOne();

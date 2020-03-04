@@ -22,6 +22,8 @@ namespace GeDiM
 
       inline void Initialize(const unsigned int& numberOfVertices, const unsigned int& numberOfSegments, const unsigned int& numberOfFaces) { }
 
+      inline IPolyhedron* Clone() const { return new Polyhedron(); }
+
       inline void InitializeVertices(const unsigned int& numberOfVertices) { vertices.reserve(numberOfVertices); }
       inline void AddVertex(const Vertex& vertex) { vertices.push_back(&vertex); }
       inline void AddVertices(const vector<const Vertex*>& _vertices) { vertices = _vertices; }

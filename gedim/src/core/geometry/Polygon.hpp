@@ -32,6 +32,8 @@ namespace GeDiM
 
       inline void Initialize(const unsigned int& numberOfVertices, const unsigned int& numberOfSegments) { InitializeVertices(numberOfVertices); InitializeSegments(numberOfSegments);}
 
+      inline IPolygon* Clone() const { return new Polygon(); }
+
       inline void InitializeVertices(const unsigned int& numberOfVertices) { vertices.reserve(numberOfVertices); }
       inline void AddVertex(const Vertex& vertex) { vertices.push_back(&vertex); }
       inline void AddVertices(const vector<const Vertex*>& _vertices) { vertices = _vertices; }

@@ -55,7 +55,7 @@ namespace GeDiM
       inline unsigned int Dimension() const { return 3; }
 
       inline Output::ExitCodes ComputeBarycenter() { if(barycenter == NULL) barycenter = new Vertex(); return ComputeBarycenter(*barycenter); }
-			Output::ExitCodes ComputeBarycenter(Vertex& _barycenter) const;
+			Output::ExitCodes ComputeBarycenter(Vertex& _barycenter) const { return Output::UnimplementedMethod; }
 
       ///Compute Centroid
       /// \brief Compute the centroid of the polygon and save inside the object

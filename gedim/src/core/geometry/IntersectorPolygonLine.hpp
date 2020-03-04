@@ -4,6 +4,7 @@
 #include "Output.hpp"
 #include "Eigen"
 #include "list"
+#include "IPolygon.hpp"
 
 using namespace std;
 using namespace MainApplication;
@@ -37,8 +38,7 @@ namespace GeDiM
 
 		private:
 
-			const GenericDomain2D* domainPointer;
-			const GenericCell* cellPointer;
+			const IPolygon* polygonPointer;
 
 			const Vector3d* startPointPointer;
 			const Vector3d* tangentPointer;
@@ -64,8 +64,7 @@ namespace GeDiM
 			void SetTolleranceParallelism(const double& _tolerance) { toleranceParallelism = _tolerance; }
 			const Output::ExitCodes ComputeIntersection();
 
-			void SetPolygon(const GenericDomain2D& domain) {domainPointer = &domain;}
-			void SetPolygon(const GenericCell& cell) {cellPointer = &cell;}
+			void SetPolygon(const IPolygon& _polygon) {polygonPointer = &_polygon;}
 			const Output::ExitCodes SetLine(const Vector3d& startPoint, const Vector3d& tangent);
 
 			const bool CheckIntersection() { return (intersectionType != NoIntersection && intersectionType != Tangent); }

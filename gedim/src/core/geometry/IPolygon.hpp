@@ -23,6 +23,9 @@ namespace GeDiM
       /// Initialize the number of segments in the polygon
       virtual void InitializeSegments(const unsigned int& numberOfSegments) = 0;
 
+      /// Create a new instance of the polygon
+      virtual IPolygon* Clone() const = 0;
+
       /// Initialize the vertices of the geometric object
       virtual void InitializeVertices(const unsigned int& numberOfVertices) = 0;
       /// Add a single vertex to the geometric object

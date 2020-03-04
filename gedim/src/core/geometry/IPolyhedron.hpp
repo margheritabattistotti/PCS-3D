@@ -15,20 +15,23 @@ namespace GeDiM
       /// Initialize the polygon with number of vertices segments and faces
       virtual void Initialize(const unsigned int& numberOfVertices, const unsigned int& numberOfSegments, const unsigned int& numberOfFaces) = 0;
 
-      /// Initialize the vertices of the geometric object
+      /// Create a new instance of the polyhedron
+      virtual IPolyhedron* Clone() const = 0;
+
+      /// Initialize the vertices of the polyhedron
       virtual void InitializeVertices(const unsigned int& numberOfVertices) = 0;
-      /// Add a single vertex to the geometric object
+      /// Add a single vertex to the polyhedron
       virtual void AddVertex(const Vertex& vertex) = 0;
-      /// Add a list of vertices to the geometric object
+      /// Add a list of vertices to the polyhedron
       virtual void AddVertices(const vector<const Vertex*>& _vertices) = 0;
 
       /// Add a new segment in the polyhedron
       virtual void AddSegment(const ISegment& segment) = 0;
       /// @return The number of segments of the polyhedron
       virtual unsigned int NumberOfSegments() const = 0;
-      /// @return The segment at position p of the geometric object
+      /// @return The segment at position p of the polyhedron
       virtual const ISegment& GetSegment(const unsigned int& position) const = 0;
-      /// @return The list of segments of the geometric object
+      /// @return The list of segments of the polyhedron
       virtual const vector<const ISegment*>& Segments() const = 0;
 
       /// Add a new faces in the polyhedron

@@ -156,15 +156,35 @@ namespace GeDiM
           concavePolygon.AddSegment(segments[s]);
       }
       // ***************************************************************************
+      void ConcavePolygonUnitTest::TestPolygon(const IPolygon& concavePolygon, const string& fatherFunctionName)
+      {
+        list<IPolygon*> convexPolygons;
+
+        Output::Assert(ConcaveToConvex::ConcaveToConvexPolygon(concavePolygon, convexPolygons), "%s: ConcaveToConvexPolygon", fatherFunctionName.c_str());
+
+        double testTolerance =1e-14;
+        unsigned int counter = 1;
+        for (list<IPolygon*>::iterator it = convexPolygons.begin(); it != convexPolygons.end(); it++)
+        {
+          if (*it == NULL)
+          {
+            Output::PrintErrorMessage("Polygon %d is NULL", true, counter);
+            continue;
+          }
+
+          const IPolygon& convexPolygon = **it;
+          Output::Assert(ConcaveToConvex::IsPolygonConvex(convexPolygon, testTolerance), "%s: IsPolygonConvex %d", fatherFunctionName.c_str(), counter);
+
+          counter++;
+        }
+      }
+      // ***************************************************************************
       void ConcavePolygonUnitTest::TestOne()
       {
         Polygon concavePolygon;
 
         ConcavePolygonUnitTest::CreatePolygonTestOne(concavePolygon);
-
-        list<IPolygon*> ConvexPolygons;
-
-        Output::Assert(ConcaveToConvex::ConcaveToConvexPolygon(concavePolygon, ConvexPolygons), "%s: Test", __func__);
+        ConcavePolygonUnitTest::TestPolygon(concavePolygon, __func__);
       }
       // ***************************************************************************
       void ConcavePolygonUnitTest::TestTwo()
@@ -172,10 +192,7 @@ namespace GeDiM
         Polygon concavePolygon;
 
         ConcavePolygonUnitTest::CreatePolygonTestTwo(concavePolygon);
-
-        list<IPolygon*> ConvexPolygons;
-
-        Output::Assert(ConcaveToConvex::ConcaveToConvexPolygon(concavePolygon, ConvexPolygons), "%s: Test", __func__);
+        ConcavePolygonUnitTest::TestPolygon(concavePolygon, __func__);
       }
       // ***************************************************************************
       void ConcavePolygonUnitTest::TestThree()
@@ -183,10 +200,7 @@ namespace GeDiM
         Polygon concavePolygon;
 
         ConcavePolygonUnitTest::CreatePolygonTestThree(concavePolygon);
-
-        list<IPolygon*> ConvexPolygons;
-
-        Output::Assert(ConcaveToConvex::ConcaveToConvexPolygon(concavePolygon, ConvexPolygons), "%s: Test", __func__);
+        ConcavePolygonUnitTest::TestPolygon(concavePolygon, __func__);
       }
       // ***************************************************************************
       void ConcavePolyhedronUnitTest::CreatePolyhedronTestOne(IPolyhedron& concavePolyhedron)
@@ -270,15 +284,35 @@ namespace GeDiM
           concavePolyhedron.AddFace(faces[f]);
       }
       // ***************************************************************************
+      void ConcavePolyhedronUnitTest::TestPolyhedron(const IPolyhedron& concavePolyhedron, const string& fatherFunctionName)
+      {
+        list<IPolyhedron*> convexPolyhedra;
+
+        Output::Assert(ConcaveToConvex::ConcaveToConvexPolyhedron(concavePolyhedron, convexPolyhedra), "%s: ConcaveToConvexPolyhedron", fatherFunctionName.c_str());
+
+        double testTolerance =1e-14;
+        unsigned int counter = 1;
+        for (list<IPolyhedron*>::iterator it = convexPolyhedra.begin(); it != convexPolyhedra.end(); it++)
+        {
+          if (*it == NULL)
+          {
+            Output::PrintErrorMessage("Polyhedron %d is NULL", true, counter);
+            continue;
+          }
+
+          const IPolyhedron& convexPolyhedron = **it;
+          Output::Assert(ConcaveToConvex::IsPolyhedronConvex(convexPolyhedron, testTolerance), "%s: IsPolyhedronConvex %d", fatherFunctionName.c_str(), counter);
+
+          counter++;
+        }
+      }
+      // ***************************************************************************
       void ConcavePolyhedronUnitTest::TestOne()
       {
         Polyhedron concavePolyhedron;
 
         ConcavePolyhedronUnitTest::CreatePolyhedronTestOne(concavePolyhedron);
-
-        list<IPolyhedron*> ConvexPolyhedra;
-
-        Output::Assert(ConcaveToConvex::ConcaveToConvexPolyhedron(concavePolyhedron, ConvexPolyhedra), "%s: Test", __func__);
+        ConcavePolyhedronUnitTest::TestPolyhedron(concavePolyhedron, __func__);
       }
       // ***************************************************************************
     }

@@ -5,6 +5,9 @@ set(gedim_core_geometry_source
 	${CMAKE_CURRENT_SOURCE_DIR}/Polygon.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Segment.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Measurer.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Intersector1D1D.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D1D.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D2D.cpp
 	PARENT_SCOPE)
 
 set(gedim_core_geometry_headers
@@ -19,4 +22,7 @@ set(gedim_core_geometry_headers
 	${CMAKE_CURRENT_SOURCE_DIR}/IPolygon.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/IPolyhedron.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Measurer.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Intersector1D1D.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D1D.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D2D.hpp
 	PARENT_SCOPE)

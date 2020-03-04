@@ -13,7 +13,7 @@ using namespace UnitTest;
 int main()
 {
   /// RUN UNIT TESTS
-  Geometry::UnitTest::RunAllTests();
+  Geometry::UnitTest::RunPolyhedronTests();
   Output::PrintLine('*');
 
   /// PRINT SUMMARY

@@ -9,6 +9,7 @@ set(gedim_core_geometry_source
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D1D.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Intersector2D2D.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/IntersectorPolygonLine.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Polyhedron.cpp
 	PARENT_SCOPE)
 
 set(gedim_core_geometry_headers

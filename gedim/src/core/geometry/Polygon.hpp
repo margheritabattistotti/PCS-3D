@@ -16,8 +16,7 @@ namespace GeDiM
   {
     protected:
       vector<const Vertex*> vertices; ///< Array of domain vertices
-      double aspectRatio;
-      vector< const ISegment* > segments; ///< list of the segments in the polygon
+			vector< const ISegment* > segments; ///< list of the segments in the polygon
 
       Vector3d* planeNormal; ///< Normal of plane containing the polygon in the space: comes from the equation ax+by+cz = d
       double planeTranslation; ///< plane translation in the space: comes from the equation ax+by+cz = d

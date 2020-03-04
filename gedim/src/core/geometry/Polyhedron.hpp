@@ -14,16 +14,18 @@ namespace GeDiM
   {
     protected:
       vector<const Vertex*> vertices; ///< Array of domain vertices
+			vector< const ISegment* > segments; ///< list of the segments in the polygon
+			vector< const IPolygon* > faces; ///< list of the faces in the polygon
 
     public:
-      Polyhedron() { }
+			Polyhedron();
       Polyhedron(const unsigned int& _id) : Polyhedron() { globalId = _id; id = _id;}
-      virtual ~Polyhedron() { }
+			virtual ~Polyhedron();
 
       inline void Initialize(const unsigned int& numberOfVertices, const unsigned int& numberOfSegments, const unsigned int& numberOfFaces) { }
-
       inline void InitializeVertices(const unsigned int& numberOfVertices) { vertices.reserve(numberOfVertices); }
-      inline void AddVertex(const Vertex& vertex) { vertices.push_back(&vertex); }
+
+			inline void AddVertex(const Vertex& vertex) { vertices.push_back(&vertex); }
       inline void AddVertices(const vector<const Vertex*>& _vertices) { vertices = _vertices; }
 
       inline unsigned int NumberOfVertices() const { return vertices.size(); }
@@ -52,7 +54,7 @@ namespace GeDiM
       inline unsigned int Dimension() const { return 3; }
 
       inline Output::ExitCodes ComputeBarycenter() { if(barycenter == NULL) barycenter = new Vertex(); return ComputeBarycenter(*barycenter); }
-      Output::ExitCodes ComputeBarycenter(Vertex& _barycenter) const { return Output::UnimplementedMethod; }
+			Output::ExitCodes ComputeBarycenter(Vertex& _barycenter) const;
 
       ///Compute Centroid
       /// \brief Compute the centroid of the polygon and save inside the object

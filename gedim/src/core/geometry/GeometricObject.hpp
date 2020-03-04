@@ -19,12 +19,13 @@ namespace GeDiM
 			unsigned int id;
 			unsigned int globalId;
 
-			Vertex* centroid; ///< Centroid of the domain
-			Vertex* barycenter; ///< Barycenter of the domain
+			Vertex* centroid; ///< Centroid of the geometric obcjet
+			Vertex* barycenter; ///< Barycenter of the geometric obcjet
 
-			double measure; ///< Measure of the domain
-			double squaredRadius; ///< Squared radius of the domain (squared max distance between centroid and vertices)
-			double radius; ///< Radius of the domain (max distance between centroid and vertices)
+			double measure; ///< Measure of the geometric obcjet
+			double squaredRadius; ///< Squared radius of the geometric obcjet (squared max distance between centroid and vertices)
+			double radius; ///< Radius of the geometric obcjet (max distance between centroid and vertices)
+			double aspectRatio; ///Aspect ratio of the geometric obcjet
 		public:
 			virtual ~GeometricObject() {}
 

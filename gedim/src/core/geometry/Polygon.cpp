@@ -18,6 +18,7 @@ namespace GeDiM
 		measure = 0.0;
 		squaredRadius = 0.0;
 		radius = 0.0;
+		aspectRatio = 0.0;
 	}
 
 	Polygon::~Polygon()

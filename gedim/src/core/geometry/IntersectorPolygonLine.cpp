@@ -92,7 +92,7 @@ namespace GeDiM
 				case Intersector1D1D::IntersectionOnSegment:
 					switch(intersect.PositionIntersectionInSecondEdge())
 					{
-						case Intersector1D1D::Inner:
+						case Intersector1D1D::Inside:
 							parametricCoordinates[counterIntersection++] = intersect.FirstParametricCoordinate();
 							indexEdges.push_back(numPnt);
 							intersectionType = TypeIntersection::Inside;

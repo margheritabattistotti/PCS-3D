@@ -27,9 +27,9 @@ namespace GeDiM
             enum Position
             {
                 Begin = 0,
-                Inner = 1,
+                Inside = 1,
                 End = 2,
-                Outer = 3
+                Outside = 3
             };
 
         private:

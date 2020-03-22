@@ -78,7 +78,7 @@ namespace GeDiM
         }
         /// </ul>
         if(resultParametricCoordinates(0) < -toleranceIntersection || resultParametricCoordinates(0) > 1.0 + toleranceIntersection)
-            positionIntersectionFirstEdge =  Outer;
+            positionIntersectionFirstEdge =  Outside;
         else if((resultParametricCoordinates(0) > -toleranceIntersection) && (resultParametricCoordinates(0) < toleranceIntersection))
         {
             resultParametricCoordinates(0) = 0.0;
@@ -90,10 +90,10 @@ namespace GeDiM
             positionIntersectionFirstEdge = End;
         }
         else
-            positionIntersectionFirstEdge = Inner;
+            positionIntersectionFirstEdge = Inside;
 
         if(resultParametricCoordinates(1) < -toleranceIntersection || resultParametricCoordinates(1) > 1.0 + toleranceIntersection)
-            positionIntersectionSecondEdge =  Outer;
+            positionIntersectionSecondEdge =  Outside;
         else if((resultParametricCoordinates(1) > -toleranceIntersection) && (resultParametricCoordinates(1) < toleranceIntersection))
         {
             resultParametricCoordinates(1) = 0.0;
@@ -105,7 +105,7 @@ namespace GeDiM
             positionIntersectionSecondEdge = End;
         }
         else
-            positionIntersectionSecondEdge = Inner;
+            positionIntersectionSecondEdge = Inside;
         return Output::Success;
     }
     // ***************************************************************************

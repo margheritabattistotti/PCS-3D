@@ -51,12 +51,19 @@ namespace GeDiM
             void SetToleranceParallelism(const double& _tolerance) { toleranceParallelism = _tolerance; }
             void SetToleranceIntersection(const double& _tolerance) { toleranceIntersection = _tolerance; }
 
+            void SetMatrixTangentVector(const Vector3d& _vector0, const Vector3d& _vector1) {matrixTangentVector.col(0) = _vector0.head(2); matrixTangentVector.col(1) = -_vector1.head(2);}
             void SetFirstTangentVector(const Vector3d& _vector) {matrixTangentVector.col(0) = _vector.head(2);}
             void SetSecondTangentVector(const Vector3d& _vector) {matrixTangentVector.col(1) = -1.0 * _vector.head(2);}
 
             ///Compute the intersections between the line of the first edge and the second edge and returns the parametric coordinates and the intersection type
+            /// line_1: X=X1_i+T1*s_0
+            /// line_2: X=X2_i+T2*s_1
+            /// tanVectorFirstEdg = T1
+            /// tanVectorSecondEdg = T2
+            /// tanVectorDifference = X2_i-X1_i
             ///The first parametric coordinate refers to the first tangentVector and ...
             ///@note In case of parallelism both the parametric coordinates refers to the first edge
+            ///@note Before the call of this member the call of SetFirstTangentVector and  SetSecondTangentVector  or SetMatrixTangentVector are needed
             const Output::ExitCodes ComputeIntersectionEdges(const Vector3d& tanVectorFirstEdge, const Vector3d& tanVectorSecondEdge, const Vector3d& tanVectorDifference);
 
             const double& ToleranceIntersection() const {return toleranceIntersection; }

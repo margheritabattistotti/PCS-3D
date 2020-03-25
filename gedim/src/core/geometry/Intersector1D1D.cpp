@@ -24,12 +24,13 @@ namespace GeDiM
     // ***************************************************************************
     const Output::ExitCodes Intersector1D1D::ComputeIntersectionEdges(const Vector3d& tanVectorFirstEdge, const Vector3d& tanVectorSecondEdge, const Vector3d& tanVectorDifference)
     {
-
+      /// parallelism = ||T1/\T2||
         double parallelism = fabs(tanVectorFirstEdge.x() * tanVectorSecondEdge.y() - tanVectorSecondEdge.x() * tanVectorFirstEdge.y());
         type = NoIntersection;
 
         double check = toleranceParallelism * toleranceParallelism * tanVectorFirstEdge.squaredNorm() * tanVectorSecondEdge.squaredNorm();
 
+	/// ||T1/\T2||^2 >= tol^2 * ||T1||^2 * ||T2||^2
         if(parallelism * parallelism >= check)
         {
             /// <li> If the edge and the trace are not parallel look for the intersection with parametric coordinates
@@ -45,10 +46,12 @@ namespace GeDiM
         }
         else
         {
+	    /// parallelis2 = ||T1/\(X2_i-X1_i)||
             double parallelism2 = fabs(tanVectorFirstEdge.x() * tanVectorDifference.y() - tanVectorDifference.x() * tanVectorFirstEdge.y());
             /// <li> In case of parallelism check if the segment is the same with parametric coordinates
 
-            double check2 = toleranceParallelism * toleranceParallelism * tanVectorFirstEdge.squaredNorm();
+            double check2 = toleranceParallelism * toleranceParallelism * tanVectorFirstEdge.squaredNorm() * tanVectorDifference.squaredNorm();
+	    /// ||T1/\(X2_i-X1_i)||^2 >= tol^2 * ||T1||^2 * ||X2_i-X1_i||^2
             if( parallelism2 * parallelism2 <= check2 )
             {
                 double tempNorm = 1.0/(tanVectorFirstEdge.squaredNorm());
@@ -65,12 +68,14 @@ namespace GeDiM
                     resultParametricCoordinates(1) = tmp;
                 }
                 // if one vertex is in the edge there is the intersection
+		///  -toleranceIntersection < resultParametricCoordinates(0) < 1.0+toleranceIntersection
                 if( (resultParametricCoordinates(0) > -toleranceIntersection && resultParametricCoordinates(0)-1.0 < toleranceIntersection) ||
                         (resultParametricCoordinates(1) > -toleranceIntersection && resultParametricCoordinates(1)-1.0 < toleranceIntersection)   )
                     type = IntersectionParallelOnSegment;
                 else
                 {
                     //IL PRIMO SEGMENTO DATO IN INPUT E' CONTENUTO NEL SECONDO
+		  /// resultParametricCoordinates(0) < toleranceIntersection && resultParametricCoordinates(1) > 1.0-toleranceIntersection
                     if( ( resultParametricCoordinates(0) < toleranceIntersection && resultParametricCoordinates(1) - 1.0 > -toleranceIntersection) )
                         type = IntersectionParallelOnSegment;
                 }

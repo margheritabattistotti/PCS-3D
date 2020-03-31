@@ -39,7 +39,7 @@ namespace GeDiM
 
             /// Divide a string by a set of characters in a vector of strings
             /// @example stringToSplit="pippo_pe:pu" characters={'_',':'} -> result=["pippo", "pe", "pu"]
-            static vector<string> Split(const string& stringToSplit, const vector<char>& characters = {' '});
+            static vector<string> Split(const string& stringToSplit, const vector<char>& characters = vector<char>(' '));
 
             /// Find inside a string a separator between two keys
             /// @example stringToSearch="id:value" keyOne="id" keyTwo="value" -> separator=':'

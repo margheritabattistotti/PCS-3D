@@ -18,6 +18,8 @@
 #define __INPUTPROPERTYSUPPORTEDTYPES_H
 
 #include <string>
+#include <typeinfo>
+
 #include "StringUtilities.hpp"
 
 using namespace std;

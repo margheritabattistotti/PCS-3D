@@ -30,7 +30,7 @@ namespace GeDiM
     {
         protected:
             char separator;
-            list<const string> header;
+            list<string> header;
             list<const ICsvExport*> rows;
 
         public:

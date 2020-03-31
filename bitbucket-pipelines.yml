@@ -1,0 +1,31 @@
+# This is a sample build configuration for C++ – Make.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: ubuntu:18.04
+
+pipelines:
+  default:
+    - step:
+        script:
+          # Configure the machine
+          - apt-get update
+          - apt-get install -y apt-utils
+          - apt-get install -y gcc-5 g++-5 gcc-5-base
+          - apt-get install -y cmake
+          - update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
+          - update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100
+          # Build library
+          - mkdir external-build
+          - cd  external-build
+          - ExternalDirectory=$(pwd)
+          - cmake ../external
+          - make
+          - cd ..
+          - mkdir build
+          - cd build
+          - cmake -DGEDIM_EXTERNAL_BUILD_DIR=$ExternalDirectory ../
+          - make
+          # Run Test
+          - ./PCS
